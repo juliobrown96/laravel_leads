@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('business_contracts', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('finished_at');
+            $table->timestamp('started_at');
+            $table->decimal('total_value', 10, 2);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

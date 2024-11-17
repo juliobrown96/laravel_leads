@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('customer_businesses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreignId('business_id')->references('id')->on('businesses')->onDelete('cascade');
+            $table->timestamp('sent_at');
+            $table->timestamp('viewed_at');
             $table->timestamps();
         });
     }

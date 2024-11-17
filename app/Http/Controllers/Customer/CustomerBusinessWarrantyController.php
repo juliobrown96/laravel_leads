@@ -12,7 +12,8 @@ class CustomerBusinessWarrantyController extends Controller
      */
     public function index()
     {
-        //
+        $customerBusinessWarranties = CustomerBusinessWarranty::all();
+        return $this->responseJson($customerBusinessWarranties);
     }
 
     /**
@@ -20,7 +21,8 @@ class CustomerBusinessWarrantyController extends Controller
      */
     public function create()
     {
-        //
+        $customerBusinessWarranties = CustomerBusinessWarranty::all();
+        return $this->responseJson($customerBusinessWarranties);
     }
 
     /**
@@ -28,7 +30,8 @@ class CustomerBusinessWarrantyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customerBusinessWarranty = CustomerBusinessWarranty::create($request->all());
+        return $this->responseJson($customerBusinessWarranty);
     }
 
     /**
@@ -36,7 +39,8 @@ class CustomerBusinessWarrantyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $customerBusinessWarranty = CustomerBusinessWarranty::find($id);
+        return $this->responseJson($customerBusinessWarranty);
     }
 
     /**
@@ -44,7 +48,8 @@ class CustomerBusinessWarrantyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customerBusinessWarranty = CustomerBusinessWarranty::find($id);
+        return $this->responseJson($customerBusinessWarranty);
     }
 
     /**
@@ -52,7 +57,9 @@ class CustomerBusinessWarrantyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $customerBusinessWarranty = CustomerBusinessWarranty::find($id);
+        $customerBusinessWarranty->update($request->all());
+        return $this->responseJson($customerBusinessWarranty);
     }
 
     /**
@@ -60,6 +67,8 @@ class CustomerBusinessWarrantyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customerBusinessWarranty = CustomerBusinessWarranty::find($id);
+        $customerBusinessWarranty->delete();
+        return $this->responseJson(['message' => 'Customer business warranty deleted successfully']);
     }
 }

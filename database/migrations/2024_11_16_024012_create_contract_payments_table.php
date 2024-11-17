@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contract_payments', function (Blueprint $table) {
+            
             $table->id();
             $table->timestamps();
+            $table->foreignId('contract_id')->references('id')->on('business_contracts')->onDelete('cascade');
+            $table->boolean('status')->default(false);
+            $table->json('payload');
+
         });
     }
 

@@ -11,7 +11,8 @@ class SystemConfigController extends Controller
      */
     public function index()
     {
-        //
+        $systemConfigs = SystemConfig::all();
+        return $this->responseJson($systemConfigs);
     }
 
     /**
@@ -19,7 +20,8 @@ class SystemConfigController extends Controller
      */
     public function create()
     {
-        //
+        $systemConfigs = SystemConfig::all();
+        return $this->responseJson($systemConfigs);
     }
 
     /**
@@ -27,7 +29,8 @@ class SystemConfigController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $systemConfig = SystemConfig::create($request->all());
+        return $this->responseJson($systemConfig);
     }
 
     /**
@@ -35,7 +38,8 @@ class SystemConfigController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $systemConfig = SystemConfig::find($id);
+        return $this->responseJson($systemConfig);
     }
 
     /**
@@ -43,7 +47,8 @@ class SystemConfigController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $systemConfig = SystemConfig::find($id);
+        return $this->responseJson($systemConfig);
     }
 
     /**
@@ -51,7 +56,9 @@ class SystemConfigController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $systemConfig = SystemConfig::find($id);
+        $systemConfig->update($request->all());
+        return $this->responseJson($systemConfig);
     }
 
     /**
@@ -59,6 +66,8 @@ class SystemConfigController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $systemConfig = SystemConfig::find($id);
+        $systemConfig->delete();
+        return $this->responseJson(['message' => 'System config deleted successfully']);
     }
 }

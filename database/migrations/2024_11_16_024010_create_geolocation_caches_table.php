@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('geolocation_caches', function (Blueprint $table) {
-            $table->id();
+            
+            $table->bigInteger('postal_code');
+            $table->decimal('latitude', 9, 6);
+            $table->decimal('longitude', 9, 6);
+            $table->json('payload');
             $table->timestamps();
         });
     }

@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('app_parameters', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('business_id')->references('id')->on('businesses')->onDelete('cascade');
+            $table->foreignId('parameter_type_id')->references('id')->on('parameter_types');
+            $table->string('value', 255);
         });
     }
 

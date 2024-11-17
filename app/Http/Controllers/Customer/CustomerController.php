@@ -12,7 +12,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::all();
+        return $this->responseJson($customers);
     }
 
     /**
@@ -20,7 +21,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::all();
+        return $this->responseJson($customers); 
     }
 
     /**
@@ -28,7 +30,8 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = Customer::create($request->all());
+        return $this->responseJson($customer);
     }
 
     /**
@@ -36,7 +39,8 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        return $this->responseJson($customer);
     }
 
     /**
@@ -44,7 +48,8 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        return $this->responseJson($customer);
     }
 
     /**
@@ -52,7 +57,9 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $customer = Customer::find($id);
+        $customer->update($request->all());
+        return $this->responseJson($customer);
     }
 
     /**
@@ -60,6 +67,8 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        $customer->delete();
+        return $this->responseJson(['message' => 'Customer deleted successfully']);
     }
 }

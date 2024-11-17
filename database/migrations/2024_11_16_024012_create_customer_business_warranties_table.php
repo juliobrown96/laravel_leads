@@ -14,6 +14,14 @@ return new class extends Migration
         Schema::create('customer_business_warranties', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('customer_business_id')->references('id')->on('customer_businesses')->onDelete('cascade');
+            $table->boolean('status')->default(true);
+            $table->text('user_response');
+            $table->text('business_info');
+            $table->timestamp('deleted_at')->nullable();
+            $table->timestamp('updated_at');
+            $table->timestamp('registered_at');
+        
         });
     }
 

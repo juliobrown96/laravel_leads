@@ -12,7 +12,8 @@ class CustomerBusinessController extends Controller
      */
     public function index()
     {
-        //
+        $customerBusinesses = CustomerBusiness::all();
+        return $this->responseJson($customerBusinesses);
     }
 
     /**
@@ -20,7 +21,8 @@ class CustomerBusinessController extends Controller
      */
     public function create()
     {
-        //
+        $customerBusiness = CustomerBusiness::create($request->all());
+        return $this->responseJson($customerBusiness);
     }
 
     /**
@@ -28,7 +30,8 @@ class CustomerBusinessController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customerBusiness = CustomerBusiness::create($request->all());
+        return $this->responseJson($customerBusiness);
     }
 
     /**
@@ -36,7 +39,8 @@ class CustomerBusinessController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $customerBusiness = CustomerBusiness::find($id);
+        return $this->responseJson($customerBusiness);
     }
 
     /**
@@ -44,7 +48,8 @@ class CustomerBusinessController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customerBusiness = CustomerBusiness::find($id);
+        return $this->responseJson($customerBusiness);
     }
 
     /**
@@ -52,7 +57,9 @@ class CustomerBusinessController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $customerBusiness = CustomerBusiness::find($id);
+        $customerBusiness->update($request->all());
+        return $this->responseJson($customerBusiness);
     }
 
     /**
@@ -60,6 +67,8 @@ class CustomerBusinessController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customerBusiness = CustomerBusiness::find($id);
+        $customerBusiness->delete();
+        return $this->responseJson(['message' => 'Customer business deleted successfully']);
     }
 }

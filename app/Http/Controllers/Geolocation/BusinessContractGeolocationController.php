@@ -12,7 +12,8 @@ class BusinessContractGeolocationController extends Controller
      */
     public function index()
     {
-        //
+        $businessContracts = BusinessContract::all();
+        return response()->json($businessContracts);
     }
 
     /**
@@ -20,7 +21,8 @@ class BusinessContractGeolocationController extends Controller
      */
     public function create()
     {
-        //
+        return response()->json($businessContracts);
+
     }
 
     /**
@@ -28,7 +30,9 @@ class BusinessContractGeolocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $businessContract = BusinessContract::create($request->all());
+        return response()->json($businessContract);
+
     }
 
     /**
@@ -36,7 +40,8 @@ class BusinessContractGeolocationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $businessContract = BusinessContract::find($id);
+        return response()->json($businessContract);
     }
 
     /**
@@ -44,7 +49,8 @@ class BusinessContractGeolocationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $businessContract = BusinessContract::find($id);
+        return response()->json($businessContract);
     }
 
     /**
@@ -52,7 +58,9 @@ class BusinessContractGeolocationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $businessContract = BusinessContract::find($id);
+        $businessContract->update($request->all());
+        return response()->json($businessContract);
     }
 
     /**
@@ -60,6 +68,8 @@ class BusinessContractGeolocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $businessContract = BusinessContract::find($id);
+        $businessContract->delete();
+        return response()->json(['message' => 'Business contract deleted successfully']);
     }
 }

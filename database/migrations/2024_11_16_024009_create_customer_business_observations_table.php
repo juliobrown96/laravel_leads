@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('customer_business_observations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('customer_business_id')->references('id')->on('customer_businesses')->onDelete('cascade');
+            $table->text('observation');
+            $table->timestamp('created_by');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

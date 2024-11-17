@@ -12,7 +12,8 @@ class GeolocationCacheController extends Controller
      */
     public function index()
     {
-        //
+        $geolocationCaches = GeolocationCache::all();
+        return response()->json($geolocationCaches);
     }
 
     /**
@@ -20,7 +21,8 @@ class GeolocationCacheController extends Controller
      */
     public function create()
     {
-        //
+        return response()->json($geolocationCaches);
+
     }
 
     /**
@@ -28,7 +30,8 @@ class GeolocationCacheController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $geolocationCache = GeolocationCache::create($request->all());
+        return response()->json($geolocationCache);
     }
 
     /**
@@ -36,7 +39,8 @@ class GeolocationCacheController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $geolocationCache = GeolocationCache::find($id);
+        return response()->json($geolocationCache);
     }
 
     /**
@@ -44,7 +48,8 @@ class GeolocationCacheController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $geolocationCache = GeolocationCache::find($id);
+        return response()->json($geolocationCache);
     }
 
     /**
@@ -52,7 +57,9 @@ class GeolocationCacheController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $geolocationCache = GeolocationCache::find($id);
+        $geolocationCache->update($request->all());
+        return response()->json($geolocationCache);
     }
 
     /**
@@ -60,6 +67,8 @@ class GeolocationCacheController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $geolocationCache = GeolocationCache::find($id);
+        $geolocationCache->delete();
+        return response()->json(['message' => 'Geolocation cache deleted successfully']);
     }
 }

@@ -12,7 +12,8 @@ class CustomerBusinessObservationController extends Controller
      */
     public function index()
     {
-        //
+        $customerBusinessObservations = CustomerBusinessObservation::all();
+        return $this->responseJson($customerBusinessObservations);
     }
 
     /**
@@ -20,7 +21,8 @@ class CustomerBusinessObservationController extends Controller
      */
     public function create()
     {
-        //
+        $customerBusinessObservation = CustomerBusinessObservation::create($request->all());
+        return $this->responseJson($customerBusinessObservation);
     }
 
     /**
@@ -28,7 +30,8 @@ class CustomerBusinessObservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $customerBusinessObservation = CustomerBusinessObservation::create($request->all());
+        return $this->responseJson($customerBusinessObservation);
     }
 
     /**
@@ -36,7 +39,8 @@ class CustomerBusinessObservationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $customerBusinessObservation = CustomerBusinessObservation::find($id);
+        return $this->responseJson($customerBusinessObservation);
     }
 
     /**
@@ -44,7 +48,8 @@ class CustomerBusinessObservationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customerBusinessObservation = CustomerBusinessObservation::find($id);
+        return $this->responseJson($customerBusinessObservation);
     }
 
     /**
@@ -52,7 +57,9 @@ class CustomerBusinessObservationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $customerBusinessObservation = CustomerBusinessObservation::find($id);
+        $customerBusinessObservation->update($request->all());
+        return $this->responseJson($customerBusinessObservation);
     }
 
     /**
@@ -60,6 +67,8 @@ class CustomerBusinessObservationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customerBusinessObservation = CustomerBusinessObservation::find($id);
+        $customerBusinessObservation->delete();
+        return $this->responseJson(['message' => 'Customer business observation deleted successfully']);
     }
 }
